@@ -3,6 +3,9 @@ www.dio.me
 
 #### Autores
 - [Gleyson Sampaio](https://github.com/glysns)
+  
+#### Aluno
+- [Lucas Sampaio](https://github.com/Like-a-stone)
 
 ## Controle de Fluxo - Desafio
 
