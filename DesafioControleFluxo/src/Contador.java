@@ -1,14 +1,23 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Contador {
+		static int parametroUm = 0;
+		static int parametroDois = 0;
+		static Scanner terminal = new Scanner(System.in);
     public static void main(String[] args) {
-		Scanner terminal = new Scanner(System.in);
-		System.out.println("Digite o primeiro parâmetro");
-		int parametroUm = terminal.nextInt();
-		System.out.println("Digite o segundo parâmetro");
-		int parametroDois = terminal.nextInt();
-        terminal.close();
 		
+
+		// Chamando metodo para recebe e analisar o tipo dos parametros. 
+		try {
+			parametroUm = getParametro("Digite o primeiro parâmetro");
+			parametroDois = getParametro("Digite o segundo parâmetro");
+		} catch (InputMismatchException e) {
+			System.out.println(e.getMessage());
+		}
+
+		terminal.close();
+
 		try {
 			//chamando o método contendo a lógica de contagem
 			contar(parametroUm, parametroDois);
@@ -29,5 +38,15 @@ public class Contador {
             System.out.printf("Imprimindo o número %d \n", i);
             parametroUm++;
         }
+	} 
+	static int getParametro(String msg) throws InputMismatchException {
+		System.out.println(msg);
+
+		// Verifica se o parametro recebido é de fato uma variavel do tipo inteiro.
+		if (!terminal.hasNextInt()) {
+			throw new InputMismatchException("Entrada inválida. Por favor, insira um número inteiro.");
+		}
+		int parametro = terminal.nextInt();
+        return parametro;
 	} 
 }
